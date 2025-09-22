@@ -1,0 +1,116 @@
+[0.136s] Invoking command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation': CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/src/turtlebot3_custom_simulation -DCMAKE_INSTALL_PREFIX=/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation
+[0.454s] -- The C compiler identification is Clang 18.1.7
+[0.543s] -- The CXX compiler identification is Clang 18.1.7
+[0.578s] -- Detecting C compiler ABI info
+[0.766s] -- Detecting C compiler ABI info - done
+[0.770s] -- Check for working C compiler: /Users/mateolopezv/miniforge3/envs/rosenv/bin/arm64-apple-darwin20.0.0-clang - skipped
+[0.771s] -- Detecting C compile features
+[0.771s] -- Detecting C compile features - done
+[0.801s] -- Detecting CXX compiler ABI info
+[0.960s] -- Detecting CXX compiler ABI info - done
+[0.964s] -- Check for working CXX compiler: /Users/mateolopezv/miniforge3/envs/rosenv/bin/arm64-apple-darwin20.0.0-clang++ - skipped
+[0.965s] -- Detecting CXX compile features
+[0.965s] -- Detecting CXX compile features - done
+[0.975s] -- Found ament_cmake: 1.3.7 (/Users/mateolopezv/miniforge3/envs/rosenv/share/ament_cmake/cmake)
+[1.155s] -- Found Python3: /opt/homebrew/Frameworks/Python.framework/Versions/3.13/bin/python3.13 (found version "3.13.4") found components: Interpreter 
+[1.337s] -- Found geometry_msgs: 4.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/geometry_msgs/cmake)
+[1.437s] -- Found rosidl_generator_c: 3.1.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rosidl_generator_c/cmake)
+[1.454s] -- Found rosidl_adapter: 3.1.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rosidl_adapter/cmake)
+[1.491s] -- Found rosidl_generator_cpp: 3.1.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rosidl_generator_cpp/cmake)
+[1.519s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.559s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.686s] -- Found nav_msgs: 4.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/nav_msgs/cmake)
+[1.765s] -- Found rclcpp: 16.0.8 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rclcpp/cmake)
+[1.916s] -- Checking for module 'yaml-0.1'
+[2.031s] --   Found yaml-0.1, version 0.2.5
+[2.380s] -- Found rmw_implementation_cmake: 6.1.1 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rmw_implementation_cmake/cmake)
+[2.389s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rmw_cyclonedds_cpp/cmake)
+[2.450s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[2.473s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.639s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.640s] -- Found Threads: TRUE  
+[2.772s] -- Found sensor_msgs: 4.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/sensor_msgs/cmake)
+[2.851s] -- Found tf2: 0.25.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/tf2/cmake)
+[2.875s] -- Found tf2_msgs: 0.25.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/tf2_msgs/cmake)
+[3.032s] -- Found turtlebot3_msgs: 2.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/turtlebot3_msgs/cmake)
+[3.174s] -- Configuring done (3.0s)
+[3.212s] -- Generating done (0.0s)
+[3.217s] -- Build files have been written to: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation
+[3.222s] Invoked command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation' returned '0': CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/src/turtlebot3_custom_simulation -DCMAKE_INSTALL_PREFIX=/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation
+[3.224s] Invoking command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation': CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --build /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation -- -j10 -l10
+[3.301s] [ 50%] Building CXX object CMakeFiles/turtlebot3_custom_simulation.dir/src/turtlebot3_custom_simulation.cpp.o
+[5.191s] In file included from /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/src/turtlebot3_custom_simulation/src/turtlebot3_custom_simulation.cpp:17:
+[5.191s] In file included from /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/src/turtlebot3_custom_simulation/include/turtlebot3_custom_simulation/turtlebot3_custom_simulation.hpp:23:
+[5.191s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/rclcpp.hpp:155:
+[5.191s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/executors.hpp:21:
+[5.191s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25:
+[5.192s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/executor.hpp:37:
+[5.192s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/executor_options.hpp:20:
+[5.192s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/memory_strategies.hpp:18:
+[5.192s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/memory_strategy.hpp:25:
+[5.192s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/any_executable.hpp:20:
+[5.192s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/callback_group.hpp:29:
+[5.192s] In file included from /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/subscription_base.hpp:32:
+[5.192s] /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/any_subscription_callback.hpp:391:7: warning: 'set_deprecated<geometry_msgs::msg::Twist_<std::allocator<void>>>' is deprecated: use 'void(std::shared_ptr<const MessageT>)' instead [-Wdeprecated-declarations]
+[5.192s]   391 |       set_deprecated(static_cast<typename scbth::callback_type>(callback));
+[5.192s]       |       ^
+[5.192s] /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/subscription_factory.hpp:94:29: note: in instantiation of function template specialization 'rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void>>>::set<std::__bind<void (Turtlebot3Fake::*)(std::shared_ptr<geometry_msgs::msg::Twist_<std::allocator<void>>>), Turtlebot3Fake *, const std::placeholders::__ph<1> &>>' requested here
+[5.192s]    94 |   any_subscription_callback.set(std::forward<CallbackT>(callback));
+[5.192s]       |                             ^
+[5.192s] /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/create_subscription.hpp:122:26: note: in instantiation of function template specialization 'rclcpp::create_subscription_factory<geometry_msgs::msg::Twist_<std::allocator<void>>, std::__bind<void (Turtlebot3Fake::*)(std::shared_ptr<geometry_msgs::msg::Twist_<std::allocator<void>>>), Turtlebot3Fake *, const std::placeholders::__ph<1> &>, std::allocator<void>, rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void>>>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void>>>, geometry_msgs::msg::Twist_<std::allocator<void>>>' requested here
+[5.192s]   122 |   auto factory = rclcpp::create_subscription_factory<MessageT>(
+[5.192s]       |                          ^
+[5.192s] /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/create_subscription.hpp:190:26: note: in instantiation of function template specialization 'rclcpp::detail::create_subscription<geometry_msgs::msg::Twist_<std::allocator<void>>, std::__bind<void (Turtlebot3Fake::*)(std::shared_ptr<geometry_msgs::msg::Twist_<std::allocator<void>>>), Turtlebot3Fake *, const std::placeholders::__ph<1> &>, std::allocator<void>, rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void>>>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void>>>, rclcpp::Node, rclcpp::Node, geometry_msgs::msg::Twist_<std::allocator<void>>>' requested here
+[5.192s]   190 |   return rclcpp::detail::create_subscription<
+[5.192s]       |                          ^
+[5.192s] /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/node_impl.hpp:99:18: note: in instantiation of function template specialization 'rclcpp::create_subscription<geometry_msgs::msg::Twist_<std::allocator<void>>, std::__bind<void (Turtlebot3Fake::*)(std::shared_ptr<geometry_msgs::msg::Twist_<std::allocator<void>>>), Turtlebot3Fake *, const std::placeholders::__ph<1> &>, std::allocator<void>, rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void>>>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void>>>, rclcpp::Node>' requested here
+[5.192s]    99 |   return rclcpp::create_subscription<MessageT>(
+[5.192s]       |                  ^
+[5.192s] /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/src/turtlebot3_custom_simulation/src/turtlebot3_custom_simulation.cpp:47:24: note: in instantiation of function template specialization 'rclcpp::Node::create_subscription<geometry_msgs::msg::Twist_<std::allocator<void>>, std::__bind<void (Turtlebot3Fake::*)(std::shared_ptr<geometry_msgs::msg::Twist_<std::allocator<void>>>), Turtlebot3Fake *, const std::placeholders::__ph<1> &>, std::allocator<void>, rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void>>>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void>>>>' requested here
+[5.192s]    47 |   cmd_vel_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
+[5.192s]       |                        ^
+[5.192s] /Users/mateolopezv/miniforge3/envs/rosenv/include/rclcpp/rclcpp/any_subscription_callback.hpp:405:5: note: 'set_deprecated<geometry_msgs::msg::Twist_<std::allocator<void>>>' has been explicitly marked deprecated here
+[5.192s]   405 |   [[deprecated("use 'void(std::shared_ptr<const MessageT>)' instead")]]
+[5.192s]       |     ^
+[7.941s] 1 warning generated.
+[7.965s] [100%] Linking CXX executable turtlebot3_custom_simulation
+[8.046s] [100%] Built target turtlebot3_custom_simulation
+[8.061s] Invoked command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation' returned '0': CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --build /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation -- -j10 -l10
+[8.149s] Invoking command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation': CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --install /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation
+[8.158s] -- Install configuration: ""
+[8.159s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/lib/turtlebot3_custom_simulation/turtlebot3_custom_simulation
+[8.159s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/launch
+[8.159s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/launch/custom_simulation.launch.py
+[8.160s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/launch/custom_room.launch.py
+[8.160s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/param
+[8.160s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/param/burger.yaml
+[8.160s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds
+[8.160s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/Walls
+[8.160s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/Walls/model.sdf
+[8.160s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/Walls/model.config
+[8.161s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/slippery.world
+[8.161s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/map
+[8.161s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/map/map.yaml
+[8.161s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/map/map.pgm
+[8.162s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/room.world
+[8.162s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/include/
+[8.162s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/include//turtlebot3_custom_simulation
+[8.162s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/include//turtlebot3_custom_simulation/turtlebot3_custom_simulation.hpp
+[8.163s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/ament_index/resource_index/package_run_dependencies/turtlebot3_custom_simulation
+[8.163s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/ament_index/resource_index/parent_prefix_path/turtlebot3_custom_simulation
+[8.164s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/ament_prefix_path.sh
+[8.164s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/ament_prefix_path.dsv
+[8.164s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/path.sh
+[8.164s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/path.dsv
+[8.165s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.bash
+[8.165s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.sh
+[8.165s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.zsh
+[8.166s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.dsv
+[8.166s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/package.dsv
+[8.166s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/ament_index/resource_index/packages/turtlebot3_custom_simulation
+[8.167s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/ament_cmake_export_include_directories-extras.cmake
+[8.167s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/ament_cmake_export_dependencies-extras.cmake
+[8.167s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/turtlebot3_custom_simulationConfig.cmake
+[8.167s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/turtlebot3_custom_simulationConfig-version.cmake
+[8.168s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/package.xml
+[8.170s] Invoked command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation' returned '0': CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --install /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation

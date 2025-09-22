@@ -1,0 +1,48 @@
+running egg_info
+creating ../../build/custom_code/custom_code.egg-info
+writing ../../build/custom_code/custom_code.egg-info/PKG-INFO
+writing dependency_links to ../../build/custom_code/custom_code.egg-info/dependency_links.txt
+writing entry points to ../../build/custom_code/custom_code.egg-info/entry_points.txt
+writing requirements to ../../build/custom_code/custom_code.egg-info/requires.txt
+writing top-level names to ../../build/custom_code/custom_code.egg-info/top_level.txt
+writing manifest file '../../build/custom_code/custom_code.egg-info/SOURCES.txt'
+reading manifest file '../../build/custom_code/custom_code.egg-info/SOURCES.txt'
+writing manifest file '../../build/custom_code/custom_code.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code
+copying custom_code/__init__.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code
+copying custom_code/my_tf.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code
+copying custom_code/my_localization.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code
+copying custom_code/robot_functions.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code
+copying custom_code/likelihood.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code
+running install
+running install_lib
+creating /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code
+copying /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code/__init__.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code
+copying /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code/my_tf.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code
+copying /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code/my_localization.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code
+copying /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code/robot_functions.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code
+copying /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/build/lib/custom_code/likelihood.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code
+byte-compiling /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code/__init__.py to __init__.cpython-311.pyc
+byte-compiling /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code/my_tf.py to my_tf.cpython-311.pyc
+byte-compiling /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code/my_localization.py to my_localization.cpython-311.pyc
+byte-compiling /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code/robot_functions.py to robot_functions.cpython-311.pyc
+byte-compiling /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code/likelihood.py to likelihood.cpython-311.pyc
+running install_data
+creating /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/ament_index/resource_index/packages
+copying resource/custom_code -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/ament_index/resource_index/packages
+copying package.xml -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/custom_code
+creating /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/custom_code/launch
+copying launch/launch_my_particles.launch.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/custom_code/launch
+copying launch/launch_my_tf.launch.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/custom_code/launch
+creating /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/custom_code/rviz
+copying rviz/tf.rviz -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/custom_code/rviz
+copying rviz/particulas.rviz -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/share/custom_code/rviz
+running install_egg_info
+Copying ../../build/custom_code/custom_code.egg-info to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/python3.11/site-packages/custom_code-0.0.0-py3.11.egg-info
+running install_scripts
+Installing likelihood script to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/custom_code
+Installing localization script to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/custom_code
+Installing my_tf script to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code/lib/custom_code
+writing list of installed files to '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/custom_code/install.log'

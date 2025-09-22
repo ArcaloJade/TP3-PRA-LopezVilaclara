@@ -1,0 +1,60 @@
+[0.382s] Invoking command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --build /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation -- -j10 -l10
+[3.000s] -- Found ament_cmake: 1.3.7 (/Users/mateolopezv/miniforge3/envs/rosenv/share/ament_cmake/cmake)
+[3.301s] -- Found geometry_msgs: 4.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/geometry_msgs/cmake)
+[3.332s] -- Found rosidl_generator_c: 3.1.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rosidl_generator_c/cmake)
+[3.336s] -- Found rosidl_adapter: 3.1.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rosidl_adapter/cmake)
+[3.344s] -- Found rosidl_generator_cpp: 3.1.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rosidl_generator_cpp/cmake)
+[3.358s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.379s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.491s] -- Found nav_msgs: 4.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/nav_msgs/cmake)
+[3.562s] -- Found rclcpp: 16.0.8 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rclcpp/cmake)
+[4.260s] -- Found rmw_implementation_cmake: 6.1.1 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rmw_implementation_cmake/cmake)
+[4.262s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/Users/mateolopezv/miniforge3/envs/rosenv/share/rmw_cyclonedds_cpp/cmake)
+[4.301s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[4.416s] -- Found sensor_msgs: 4.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/sensor_msgs/cmake)
+[4.492s] -- Found tf2: 0.25.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/tf2/cmake)
+[4.501s] -- Found tf2_msgs: 0.25.5 (/Users/mateolopezv/miniforge3/envs/rosenv/share/tf2_msgs/cmake)
+[4.637s] -- Found turtlebot3_msgs: 2.2.3 (/Users/mateolopezv/miniforge3/envs/rosenv/share/turtlebot3_msgs/cmake)
+[4.825s] -- Configuring done (1.9s)
+[5.063s] -- Generating done (0.2s)
+[5.069s] -- Build files have been written to: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation
+[5.168s] [100%] Built target turtlebot3_custom_simulation
+[5.183s] Invoked command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --build /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation -- -j10 -l10
+[5.266s] Invoking command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --install /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation
+[5.275s] -- Install configuration: ""
+[5.275s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/lib/turtlebot3_custom_simulation/turtlebot3_custom_simulation
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/launch
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/launch/custom_simulation.launch.py
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/launch/custom_room.launch.py
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/param
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/param/burger.yaml
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/Walls
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/Walls/model.sdf
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/Walls/model.config
+[5.276s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/slippery.world
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/map
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/map/map.yaml
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/map/map.pgm
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/worlds/room.world
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/include/
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/include//turtlebot3_custom_simulation
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/include//turtlebot3_custom_simulation/turtlebot3_custom_simulation.hpp
+[5.277s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/ament_index/resource_index/package_run_dependencies/turtlebot3_custom_simulation
+[5.277s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/ament_index/resource_index/parent_prefix_path/turtlebot3_custom_simulation
+[5.278s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/ament_prefix_path.sh
+[5.278s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/ament_prefix_path.dsv
+[5.279s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/path.sh
+[5.279s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/environment/path.dsv
+[5.279s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.bash
+[5.280s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.sh
+[5.280s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.zsh
+[5.280s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/local_setup.dsv
+[5.280s] -- Installing: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/package.dsv
+[5.281s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/ament_index/resource_index/packages/turtlebot3_custom_simulation
+[5.281s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/ament_cmake_export_include_directories-extras.cmake
+[5.281s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.281s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/turtlebot3_custom_simulationConfig.cmake
+[5.281s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/cmake/turtlebot3_custom_simulationConfig-version.cmake
+[5.281s] -- Up-to-date: /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/turtlebot3_custom_simulation/share/turtlebot3_custom_simulation/package.xml
+[5.282s] Invoked command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/install/custom_code CONDA_PROMPT_MODIFIER=(rosenv) SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/cmake --install /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/build/turtlebot3_custom_simulation

@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: custom_code
+Version: 0.0.0
+Maintainer: 
+Maintainer-email: 
+Requires-Dist: setuptools
+Dynamic: requires-dist

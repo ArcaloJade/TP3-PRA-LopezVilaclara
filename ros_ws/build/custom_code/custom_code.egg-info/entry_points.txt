@@ -1,0 +1,4 @@
+[console_scripts]
+likelihood = custom_code.likelihood:main
+localization = custom_code.my_localization:main
+my_tf = custom_code.my_tf:main
