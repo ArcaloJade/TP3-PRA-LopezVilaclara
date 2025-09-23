@@ -9,7 +9,7 @@ PARA CORRER EL CÓDIGO:
 - **Terminal 3:** ros2 run turtlebot3_teleop teleop_keyboard
 
 TAREAS PENDIENTES:
-- Completar la función **map_callback** en el nodo likelihood.py
+- Completar la función **map_callback** en el nodo likelihood.py (Hecho, chequear en compu de LINAR)
 - Completar los métodos **move_odom**, **get_selected_state** y **update_particles** de la clase particle en el nodo robot_functions.py
 
 NOTAS:

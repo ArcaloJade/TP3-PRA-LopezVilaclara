@@ -18,23 +18,28 @@ class particle():
         self.y = float(new_y)
         self.orientation = float(new_orientation)
 
-    def move_odom(self,odom,noise):
+    def move_odom(self, odom, noise):
         '''
         move_odom: Takes in Odometry data and moves the robot based on the odometry data
         
         Devuelve una particula (del robot) actualizada
         '''      
-        dist  = odom['t']       
-        delta_rot1  = odom['r1']
+        delta_rot1 = odom['r1']
         delta_rot2 = odom['r2']
+        delta_trans = odom['t']
+        alpha1, alpha2, alpha3, alpha4 = noise
 
-        # TODO: Calcular la nueva posicion y orientacion del robot en base a lo medido y ruido
+        delta_rot1_hat = delta_rot1 + np.random.normal(0, np.sqrt(alpha1*delta_rot1**2 + alpha2*delta_trans**2))
+        delta_trans_hat = delta_trans + np.random.normal(0, np.sqrt(alpha3*delta_trans**2 + alpha4*(delta_rot1**2 + delta_rot2**2)))
+        delta_rot2_hat = delta_rot2 + np.random.normal(0, np.sqrt(alpha1*delta_rot2**2 + alpha2*delta_trans**2))
 
-        x_new = self.x
-        y_new = self.y
-        theta_new = self.orientation
+        x_new = self.x + delta_trans_hat * np.cos(self.orientation + delta_rot1_hat)
+        y_new = self.y + delta_trans_hat * np.sin(self.orientation + delta_rot1_hat)
+        theta_new = self.orientation + delta_rot1_hat + delta_rot2_hat
 
-        self.set(x_new, y_new,theta_new )
+        theta_new = (theta_new + np.pi) % (2 * np.pi) - np.pi
+
+        self.set(x_new, y_new, theta_new)
 
     def set_weight(self, weight):
         '''
