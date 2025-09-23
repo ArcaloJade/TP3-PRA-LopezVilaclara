@@ -27,6 +27,7 @@ class LikelihoodMapPublisher(Node):
         resolution = msg.info.resolution
 
         occupancy = np.array(msg.data, dtype=np.int8).reshape((height, width))
+        # occupancy = np.flipud(occupancy)  # Descomentar si no funciona. Corrige para que (0,0) esté abajo
 
         occupied_mask = occupancy == 100
 
