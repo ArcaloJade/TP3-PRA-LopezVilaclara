@@ -18,7 +18,7 @@ from nav_msgs.msg import Odometry
 from sensor_msgs.msg import PointCloud2, PointField, LaserScan
 from scipy.spatial.transform import Rotation as R
 from std_msgs.msg import Header
-from custom_code.robot_functions_complete import RobotFunctions
+from custom_code.robot_functions import RobotFunctions
 from nav_msgs.msg import OccupancyGrid
 from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy, QoSDurabilityPolicy
 from nav_msgs.msg import Path
@@ -144,12 +144,13 @@ class Odom3Node(Node):
         self.pointcloud_pub.publish(pointcloud_msg)
 
         # --- Compute weighted average pose ---
-        mean_x = np.average(samples[:, 0], weights=weights)
-        mean_y = np.average(samples[:, 1], weights=weights)
+        selected_state = self.robot.get_selected_state()
+        mean_x = selected_state[0]
+        mean_y = selected_state[1]
 
         # Handle circular mean for angle
-        cos_t = np.average(np.cos(samples[:, 2]), weights=weights)
-        sin_t = np.average(np.sin(samples[:, 2]), weights=weights)
+        cos_t = np.cos(selected_state[2])
+        sin_t = np.sin(selected_state[2])
         mean_theta = np.arctan2(sin_t, cos_t)
 
         # Build PoseStamped for the mean particle

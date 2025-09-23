@@ -22,16 +22,43 @@ class LikelihoodMapPublisher(Node):
         prob_msg.header = msg.header
         prob_msg.info = msg.info
 
-
         # TODO: Completar el codigo para que el mensaje contenga la data del mapa de probabilidades
         # prob_msg.data = mapa de probabilidades
         # ROS espera que la data sea un array unidimensional de enteros de 8 bits con valores entre 0 y 100
         # msg.data contiene la data del mapa de ocupación como un array de enteros de 8 bits con 0 para celdas libres
         # 100 para celdas ocupadas y -1 para celdas desconocidas
-        prob_msg.data = np.zeros(len(msg.data), dtype=np.int8).tolist()
 
+        width = msg.info.width
+        height = msg.info.height
+        resolution = msg.info.resolution
 
+        occupancy = np.array(msg.data, dtype=np.int8).reshape((height, width))
 
+        occupied_mask = occupancy == 100
+
+        occupied_coords = np.argwhere(occupied_mask)
+
+        likelihood_field = np.zeros((height, width), dtype=np.float32)
+
+        sigma_hit = 0.2
+        z_random = 0.01
+        z_hit = 0.9
+
+        if len(occupied_coords) > 0:
+            for i in range(height):
+                for j in range(width):
+                    if occupancy[i, j] == -1:
+                        likelihood_field[i, j] = -1
+                        continue
+                    dist = np.min(np.linalg.norm(occupied_coords - np.array([i, j]), axis=1) * resolution)
+                    p_hit = np.exp(-0.5 * (dist / sigma_hit) ** 2)
+                    likelihood_field[i, j] = z_hit * p_hit + z_random
+
+        likelihood_field_scaled = np.clip(likelihood_field * 100, 0, 100).astype(np.int8)
+
+        likelihood_field_scaled[occupancy == -1] = -1
+
+        prob_msg.data = likelihood_field_scaled.flatten().tolist()
 
         self.pub.publish(prob_msg)
         self.get_logger().info("Published likelihood map")

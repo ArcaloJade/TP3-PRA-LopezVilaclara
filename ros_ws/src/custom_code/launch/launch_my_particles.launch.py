@@ -48,6 +48,7 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file])
 
     ld = LaunchDescription()
+    ld.add_action(num_particles_arg)
     ld.add_action(start_rviz2_cmd)
     
     # Add actions to LaunchDescription
