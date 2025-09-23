@@ -186,18 +186,31 @@ class RobotFunctions:
             - points_map[0]: coordenadas x
             - points_map[1]: coordenadas y
         '''
+        # xs = []
+        # ys = []
+        # angle = angle_min
+        # tx, ty, theta = last_odom
+        # for r in ranges:
+        #     if range_min < r < range_max:
+        #         x_local = r * np.cos(angle)
+        #         y_local = r * np.sin(angle)
+        #         x_global = tx + np.cos(theta) * x_local - np.sin(theta) * y_local
+        #         y_global = ty + np.sin(theta) * x_local + np.cos(theta) * y_local
+        #         xs.append(x_global)
+        #         ys.append(y_global)
+        #     angle += angle_increment
+        # points_map = np.array([xs, ys])
+        # return points_map
         xs = []
         ys = []
-        angle = angle_min
         tx, ty, theta = last_odom
+        angle = angle_min
         for r in ranges:
             if range_min < r < range_max:
-                x_local = r * np.cos(angle)
-                y_local = r * np.sin(angle)
-                x_global = tx + np.cos(theta) * x_local - np.sin(theta) * y_local
-                y_global = ty + np.sin(theta) * x_local + np.cos(theta) * y_local
+                ang_global = theta + angle
+                x_global = tx + r * np.cos(ang_global)
+                y_global = ty + r * np.sin(ang_global)
                 xs.append(x_global)
                 ys.append(y_global)
             angle += angle_increment
-        points_map = np.array([xs, ys])
-        return points_map
+        return np.array([xs, ys])
