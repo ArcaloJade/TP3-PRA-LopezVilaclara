@@ -75,8 +75,24 @@ class RobotFunctions:
         Esta funcion debe devolver lo que ustedes consideran como la posición del robot segun las particulas.
         Queda a su criterio como la obtienen en base a las particulas.
         '''
-        # TODO: Completar
-        return [0,0,0]
+        xs = np.array([p.x for p in self.particles])
+        ys = np.array([p.y for p in self.particles])
+        thetas = np.array([p.orientation for p in self.particles])
+        weights = np.array([p.weight for p in self.particles])
+
+        if np.sum(weights) > 0:
+            weights = weights / np.sum(weights)
+        else:
+            weights = np.ones(len(weights)) / len(weights)
+
+        x_est = np.average(xs, weights=weights)
+        y_est = np.average(ys, weights=weights)
+
+        sin_sum = np.average(np.sin(thetas), weights=weights)
+        cos_sum = np.average(np.cos(thetas), weights=weights)
+        theta_est = np.arctan2(sin_sum, cos_sum)
+
+        return [x_est, y_est, theta_est]
 
     def update_particles(self, data, map_data, grid):
         '''
