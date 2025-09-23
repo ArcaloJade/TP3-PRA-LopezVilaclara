@@ -98,22 +98,78 @@ class RobotFunctions:
         '''
         La funcion update_particles se llamará cada vez que se recibe data del LIDAR
         Esta funcion toma:
-            data: datos del lidar en formato scan (Ver documentacion de ROS sobre tipo de dato LaserScan).
-                  Pueden aprovechar la funcion scan_refererence del TP1 para convertir los datos crudos en
-                  posiciones globales calculadas
-            map_data: Es el mensaje crudo del mapa de likelihood. Pueden consultar la documentacion de ROS
-                      sobre tipos de dato OccupancyGrid.
-            grid: Es la representación como matriz de numpy del mapa de likelihood. 
-                  Importante:
-                    - La grilla se indexa como grid[y, x], primero fila (eje Y) y luego columna (eje X).
-                    - La celda (0,0) corresponde a la esquina inferior izquierda del mapa en coordenadas de ROS.
+            data: datos del lidar en formato scan (LaserScan).
+                Se usa scan_refererence para convertir los datos crudos en
+                posiciones globales calculadas
+            map_data: mensaje crudo del mapa de likelihood (OccupancyGrid).
+            grid: representación como matriz de numpy del mapa de likelihood. 
+                Importante:
+                    - La grilla se indexa como grid[y, x]
+                    - La celda (0,0) corresponde a la esquina inferior izquierda del mapa.
         
-        Esta funcion debe tomar toda esta data y actualizar el valor de probabilidad (weight) de cada partícula
-        En base a eso debe resamplear las partículas. Tenga cuidado al resamplear de hacer un deepcopy para que 
-        no sean el mismo objeto de python
+        Esta funcion debe actualizar el valor de probabilidad (weight) de cada partícula
+        y luego resamplear las partículas.
         '''
-        # TODO: Implementar la actualización de pesos y resampling
-        pass
+
+        resolution = map_data.info.resolution
+        origin_x = map_data.info.origin.position.x
+        origin_y = map_data.info.origin.position.y
+        width = map_data.info.width
+        height = map_data.info.height
+
+        new_weights = []
+
+        for part in self.particles:
+            points_map = self.scan_refererence(
+                data.ranges,
+                data.range_min,
+                data.range_max,
+                data.angle_min,
+                data.angle_max,
+                data.angle_increment,
+                [part.x, part.y, part.orientation]
+            )
+
+            xs, ys = points_map
+            log_prob = 0.0
+
+            for x_z, y_z in zip(xs, ys):
+                x_cell = int((x_z - origin_x) / resolution)
+                y_cell = int((y_z - origin_y) / resolution)
+
+                if 0 <= x_cell < width and 0 <= y_cell < height:
+                    val = grid[y_cell, x_cell]
+                    if val >= 0:
+                        p = val / 100.0
+                    else:
+                        p = 0.01
+                else:
+                    p = 0.01
+
+                log_prob += np.log(max(p, 1e-6))
+
+            part.weight = np.exp(log_prob)
+            new_weights.append(part.weight)
+
+        new_weights = np.array(new_weights)
+        if np.sum(new_weights) > 0:
+            new_weights /= np.sum(new_weights)
+        else:
+            new_weights = np.ones(len(new_weights)) / len(new_weights)
+
+        for i, part in enumerate(self.particles):
+            part.weight = new_weights[i]
+
+        indices = np.random.choice(
+            range(len(self.particles)),
+            size=len(self.particles),
+            p=new_weights
+        )
+        new_particles = [copy.deepcopy(self.particles[i]) for i in indices]
+        self.particles = new_particles
+
+        self.weights = new_weights
+
 
 
     def scan_refererence(self, ranges, range_min, range_max, angle_min, angle_max, angle_increment, last_odom):
@@ -130,9 +186,18 @@ class RobotFunctions:
             - points_map[0]: coordenadas x
             - points_map[1]: coordenadas y
         '''
-        
-        # Valores para que no falle el codigo
-        points_map = np.array([[0, 0, 0], [0, 0, 0]])
-
-
+        xs = []
+        ys = []
+        angle = angle_min
+        tx, ty, theta = last_odom
+        for r in ranges:
+            if range_min < r < range_max:
+                x_local = r * np.cos(angle)
+                y_local = r * np.sin(angle)
+                x_global = tx + np.cos(theta) * x_local - np.sin(theta) * y_local
+                y_global = ty + np.sin(theta) * x_local + np.cos(theta) * y_local
+                xs.append(x_global)
+                ys.append(y_global)
+            angle += angle_increment
+        points_map = np.array([xs, ys])
         return points_map

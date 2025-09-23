@@ -22,12 +22,6 @@ class LikelihoodMapPublisher(Node):
         prob_msg.header = msg.header
         prob_msg.info = msg.info
 
-        # TODO: Completar el codigo para que el mensaje contenga la data del mapa de probabilidades
-        # prob_msg.data = mapa de probabilidades
-        # ROS espera que la data sea un array unidimensional de enteros de 8 bits con valores entre 0 y 100
-        # msg.data contiene la data del mapa de ocupación como un array de enteros de 8 bits con 0 para celdas libres
-        # 100 para celdas ocupadas y -1 para celdas desconocidas
-
         width = msg.info.width
         height = msg.info.height
         resolution = msg.info.resolution
