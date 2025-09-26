@@ -111,60 +111,88 @@ class RobotFunctions:
         En base a eso debe resamplear las partículas. Tenga cuidado al resamplear de hacer un deepcopy para que 
         no sean el mismo objeto de python
         '''
-        new_weights = []
-
-        for part in self.particles:
-            # Obtener puntos del LIDAR transformados al sistema global según la partícula
-            points = self.scan_refererence(
-                ranges=data['ranges'],
-                range_min=data['range_min'],
-                range_max=data['range_max'],
-                angle_min=data['angle_min'],
-                angle_max=data['angle_max'],
-                angle_increment=data['angle_increment'],
-                last_odom=[part.x, part.y, part.orientation]
-            )
-
-            # Obtener resolución y origen del mapa
-            resolution = map_data.info.resolution
-            origin_x = map_data.info.origin.position.x
-            origin_y = map_data.info.origin.position.y
-
-            # Convertir de coordenadas globales (metros) a índices de grilla
-            x_points = np.round((points[0] - origin_x) / resolution).astype(int)
-            y_points = np.round((points[1] - origin_y) / resolution).astype(int)
-
-            # Inicializamos peso en 1
-            weight = 1.0
-
-            # Multiplicamos probabilidades según el mapa
-            for x, y in zip(x_points, y_points):
-                if 0 <= x < grid.shape[1] and 0 <= y < grid.shape[0]:
-                    weight *= grid[y, x] + 1e-6  # evitar peso 0
-                else:
-                    weight *= 1e-6  # puntos fuera del mapa muy improbables
-
-            part.set_weight(weight)
-            new_weights.append(weight)
-
-        # Normalizamos pesos
-        new_weights = np.array(new_weights)
-        if np.sum(new_weights) > 0:
-            new_weights /= np.sum(new_weights)
-        else:
-            # Si todos los pesos son cero, poner uniformes
-            new_weights = np.ones(self.num_particles) / self.num_particles
-
-        self.weights = new_weights
-
-        # Resampleo de partículas según los pesos
-        indices = np.random.choice(self.num_particles, size=self.num_particles, p=self.weights)
-        self.particles = [copy.deepcopy(self.particles[i]) for i in indices]
+            # Extraer información del mapa
+        resolution = map_data.info.resolution
+        origin_x = map_data.info.origin.position.x
+        origin_y = map_data.info.origin.position.y
+        width = map_data.info.width
+        height = map_data.info.height
         
-        # Después del resampleo, pesos uniformes
+        # Extraer parámetros del LIDAR
+        ranges = data.ranges
+        range_min = data.range_min
+        range_max = data.range_max
+        angle_min = data.angle_min
+        angle_max = data.angle_max
+        angle_increment = data.angle_increment
+        
+        # Actualizar pesos para cada partícula
+        for i, particle in enumerate(self.particles):
+            # Usar la partícula como odometría para calcular puntos LIDAR
+            odom_particle = [particle.x, particle.y, particle.orientation]
+            
+            # Convertir lecturas LIDAR a coordenadas globales usando la posición de la partícula
+            points_map = self.scan_refererence(ranges, range_min, range_max, 
+                                            angle_min, angle_max, angle_increment, 
+                                            odom_particle)
+            
+            # Calcular likelihood para esta partícula
+            likelihood = 1.0
+            valid_points = 0
+            
+            for j in range(len(points_map[0])):
+                x_global = points_map[0][j]
+                y_global = points_map[1][j]
+                
+                # Convertir coordenadas globales a índices de la grilla
+                grid_x = int((x_global - origin_x) / resolution)
+                grid_y = int((y_global - origin_y) / resolution)
+                
+                # Verificar que el punto esté dentro de los límites de la grilla
+                if 0 <= grid_x < width and 0 <= grid_y < height:
+                    # Obtener el valor de likelihood del mapa (recordar indexado grid[y, x])
+                    likelihood_value = grid[grid_y, grid_x]
+                    
+                    # Convertir de valor de grilla (0-100) a probabilidad (0-1)
+                    # Valores altos en likelihood field indican mayor probabilidad
+                    prob = likelihood_value / 100.0
+                    
+                    # Acumular likelihood (producto de probabilidades individuales)
+                    likelihood *= (prob + 0.01)  # Agregar pequeña constante para evitar likelihood = 0
+                    valid_points += 1
+            
+            # Si no hay puntos válidos, asignar peso muy bajo
+            if valid_points == 0:
+                likelihood = 0.001
+            
+            # Actualizar peso de la partícula
+            self.particles[i].set_weight(likelihood)
+            self.weights[i] = likelihood
+        
+        # Normalizar pesos
+        weight_sum = np.sum(self.weights)
+        if weight_sum > 0:
+            self.weights = self.weights / weight_sum
+        else:
+            # Si todos los pesos son 0, usar distribución uniforme
+            self.weights = np.ones(self.num_particles) / self.num_particles
+        
+        # Resampleo basado en pesos (Systematic Resampling)
+        new_particles = []
+        
+        # Calcular índices de resampleo
+        indices = np.random.choice(self.num_particles, self.num_particles, p=self.weights)
+        
+        # Crear nuevas partículas haciendo deep copy
+        for idx in indices:
+            new_particle = copy.deepcopy(self.particles[idx])
+            new_particles.append(new_particle)
+        
+        # Reemplazar las partículas antigas con las nuevas
+        self.particles = new_particles
+        
+        # Reiniciar pesos a distribución uniforme después del resampleo
         self.weights = np.ones(self.num_particles) / self.num_particles
-
-
 
 
     def scan_refererence(self, ranges, range_min, range_max, angle_min, angle_max, angle_increment, last_odom):
