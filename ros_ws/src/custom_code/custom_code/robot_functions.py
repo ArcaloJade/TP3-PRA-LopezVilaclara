@@ -218,7 +218,7 @@ class RobotFunctions:
 
         for i, r in enumerate(ranges):
             if range_min <= r <= range_max:
-                angle = angle_min + i * angle_increment + 180
+                angle = angle_min + i * angle_increment + np.pi
                 # Coordenadas locales
                 x_local = r * np.cos(angle)
                 y_local = r * np.sin(angle)
