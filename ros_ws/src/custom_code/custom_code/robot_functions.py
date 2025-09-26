@@ -29,20 +29,19 @@ class particle():
         delta_trans = odom['t']
         alpha1, alpha2, alpha3, alpha4 = noise
 
-        # Aplicar ruido a los movimientos
+        # Aplico el ruido (alphas)
         delta_rot1_hat = delta_rot1 + np.random.normal(0, np.sqrt(alpha1*delta_rot1**2 + alpha2*delta_trans**2))
         delta_trans_hat = delta_trans + np.random.normal(0, np.sqrt(alpha3*delta_trans**2 + alpha4*(delta_rot1**2 + delta_rot2**2)))
         delta_rot2_hat = delta_rot2 + np.random.normal(0, np.sqrt(alpha1*delta_rot2**2 + alpha2*delta_trans**2))
 
-        # Calcular nueva posición
+        # Calculo nuevas posiciones y orientación con los deltas
         x_new = self.x + delta_trans_hat * np.cos(self.orientation + delta_rot1_hat)
         y_new = self.y + delta_trans_hat * np.sin(self.orientation + delta_rot1_hat)
         theta_new = self.orientation + delta_rot1_hat + delta_rot2_hat
 
-        # Normalizar theta a [-pi, pi]
+        # Normalizo theta a [-pi, pi]
         theta_new = (theta_new + np.pi) % (2 * np.pi) - np.pi
 
-        # Actualizar los valores de la partícula
         self.set(x_new, y_new, theta_new)
 
     def set_weight(self, weight):
@@ -86,7 +85,7 @@ class RobotFunctions:
         x_mean = np.average(states[:, 0], weights=weights)
         y_mean = np.average(states[:, 1], weights=weights)
 
-        # Para la orientación, usamos media circular
+        # Para la orientación, uso media circular
         sin_sum = np.sum(np.sin(states[:, 2]) * weights)
         cos_sum = np.sum(np.cos(states[:, 2]) * weights)
         theta_mean = np.arctan2(sin_sum, cos_sum)
@@ -111,33 +110,32 @@ class RobotFunctions:
         En base a eso debe resamplear las partículas. Tenga cuidado al resamplear de hacer un deepcopy para que 
         no sean el mismo objeto de python
         '''
-            # Extraer información del mapa
+        
+        # Info del mapa
         resolution = map_data.info.resolution
         origin_x = map_data.info.origin.position.x
         origin_y = map_data.info.origin.position.y
         width = map_data.info.width
         height = map_data.info.height
-        # width, height = grid.shape
         
-        # Extraer parámetros del LIDAR
-        ranges = data.ranges #np.array(data.ranges)
+        # Parámetros del LIDAR
+        ranges = data.ranges
         range_min = data.range_min
         range_max = data.range_max
         angle_min = data.angle_min
         angle_max = data.angle_max
         angle_increment = data.angle_increment
         
-        # Actualizar pesos para cada partícula
+        # Actualizo los pesos por partícula
         for i, particle in enumerate(self.particles):
-            # Usar la partícula como odometría para calcular puntos LIDAR
             odom_particle = [particle.x, particle.y, particle.orientation]
             
-            # Convertir lecturas LIDAR a coordenadas globales usando la posición de la partícula
+            # Convierto las lecturas LIDAR a coordenadas globales usando la posición de la partícula
             points_map = self.scan_refererence(ranges, range_min, range_max, 
                                             angle_min, angle_max, angle_increment, 
                                             odom_particle)
             
-            # Calcular likelihood para esta partícula
+            # Calculo el likelihood de la partícula
             likelihood = 1.0
             valid_points = 0
             
@@ -145,54 +143,53 @@ class RobotFunctions:
                 x_global = points_map[0][j]
                 y_global = points_map[1][j]
                 
-                # Convertir coordenadas globales a índices de la grilla
+                # Convierto coordenadas globales a índices del grid
                 grid_x = int((x_global - origin_x) / resolution)
                 grid_y = int((y_global - origin_y) / resolution)
                 
-                # Verificar que el punto esté dentro de los límites de la grilla
+                # Chequeo para que el punto esté dentro del grid
                 if 0 <= grid_x < width and 0 <= grid_y < height:
-                    # Obtener el valor de likelihood del mapa (recordar indexado grid[y, x])
+                    # Valor de likelihood del mapa (POR CONSIGNA indexado grid[y, x])
                     likelihood_value = grid[grid_y, grid_x]
                     
-                    # Convertir de valor de grilla (0-100) a probabilidad (0-1)
-                    # Valores altos en likelihood field indican mayor probabilidad
+                    # Convierto de valor de grilla (0-100) a probabilidad (0-1)
                     prob = likelihood_value / 100.0
                     
-                    # Acumular likelihood (producto de probabilidades individuales)
-                    likelihood *= (prob + 0.01)  # Agregar pequeña constante para evitar likelihood = 0
+                    # Acumulo el likelihood
+                    likelihood *= (prob + 0.01)  # El 0.01 lo estoy poniendo para evitar multiplicar por 0
                     valid_points += 1
             
-            # Si no hay puntos válidos, asignar peso muy bajo
+            # Si no hay puntos válidos, asigno peso muy bajo
             if valid_points == 0:
                 likelihood = 0.001
             
-            # Actualizar peso de la partícula
+            # Actualizo el peso de la partícula
             self.particles[i].set_weight(likelihood)
             self.weights[i] = likelihood
         
-        # Normalizar pesos
+        # Normalizo los pesos
         weight_sum = np.sum(self.weights)
         if weight_sum > 0:
             self.weights = self.weights / weight_sum
         else:
-            # Si todos los pesos son 0, usar distribución uniforme
+            # Si todos los pesos son 0, usar distribución uniforme (pasó algo raro!!!)
             self.weights = np.ones(self.num_particles) / self.num_particles
         
-        # Resampleo basado en pesos (Systematic Resampling)
+        # Resampleo basado en pesos
         new_particles = []
         
-        # Calcular índices de resampleo
+        # Índices de resampleo
         indices = np.random.choice(self.num_particles, self.num_particles, p=self.weights)
         
-        # Crear nuevas partículas haciendo deep copy
+        # Creo nuevas partículas HACIENDO DEEPCOPY (importante!)
         for idx in indices:
             new_particle = copy.deepcopy(self.particles[idx])
             new_particles.append(new_particle)
         
-        # Reemplazar las partículas antigas con las nuevas
+        # Actualizo las partículas
         self.particles = new_particles
         
-        # Reiniciar pesos a distribución uniforme después del resampleo
+        # Reinicio pesos a distribución uniforme después del resampleo
         self.weights = np.ones(self.num_particles) / self.num_particles
 
 
@@ -218,7 +215,7 @@ class RobotFunctions:
 
         for i, r in enumerate(ranges):
             if range_min <= r <= range_max:
-                angle = angle_min + i * angle_increment + np.pi
+                angle = angle_min + i * angle_increment + np.pi # El pi son los 180 para corregir la orientación (lo dijo Tadeo)
                 # Coordenadas locales
                 x_local = r * np.cos(angle)
                 y_local = r * np.sin(angle)
