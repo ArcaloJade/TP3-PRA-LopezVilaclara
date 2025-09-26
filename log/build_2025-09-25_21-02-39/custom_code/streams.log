@@ -1,0 +1,30 @@
+[0.444s] Invoking command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/src/custom_code': CONDA_PROMPT_MODIFIER=(rosenv) PYTHONPATH=/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/prefix_override:/Users/mateolopezv/miniforge3/envs/rosenv/lib/python3.11/site-packages/colcon_core/task/python/colcon_distutils_commands:/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/lib/python3.11/site-packages:${PYTHONPATH} SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/python3.11 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/custom_code build --build-base /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/build install --record /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/install.log --single-version-externally-managed install_data
+[0.536s] /Users/mateolopezv/miniforge3/envs/rosenv/lib/python3.11/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[0.536s]   warnings.warn(msg)
+[0.579s] running egg_info
+[0.585s] writing ../../../build/custom_code/custom_code.egg-info/PKG-INFO
+[0.585s] writing dependency_links to ../../../build/custom_code/custom_code.egg-info/dependency_links.txt
+[0.586s] writing entry points to ../../../build/custom_code/custom_code.egg-info/entry_points.txt
+[0.586s] writing requirements to ../../../build/custom_code/custom_code.egg-info/requires.txt
+[0.586s] writing top-level names to ../../../build/custom_code/custom_code.egg-info/top_level.txt
+[0.601s] reading manifest file '../../../build/custom_code/custom_code.egg-info/SOURCES.txt'
+[0.602s] writing manifest file '../../../build/custom_code/custom_code.egg-info/SOURCES.txt'
+[0.602s] running build
+[0.602s] running build_py
+[0.602s] copying custom_code/my_localization.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/build/lib/custom_code
+[0.603s] copying custom_code/robot_functions.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/build/lib/custom_code
+[0.603s] copying custom_code/likelihood.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/build/lib/custom_code
+[0.604s] running install
+[0.607s] running install_lib
+[0.615s] running install_data
+[0.616s] copying launch/launch_my_particles.launch.py -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/share/custom_code/launch
+[0.616s] copying rviz/particulas.rviz -> /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/share/custom_code/rviz
+[0.616s] running install_egg_info
+[0.624s] removing '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/lib/python3.11/site-packages/custom_code-0.0.0-py3.11.egg-info' (and everything under it)
+[0.625s] Copying ../../../build/custom_code/custom_code.egg-info to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/lib/python3.11/site-packages/custom_code-0.0.0-py3.11.egg-info
+[0.626s] running install_scripts
+[0.679s] Installing likelihood script to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/lib/custom_code
+[0.679s] Installing localization script to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/lib/custom_code
+[0.679s] Installing my_tf script to /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/lib/custom_code
+[0.679s] writing list of installed files to '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/install.log'
+[0.693s] Invoked command in '/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/ros_ws/src/custom_code' returned '0': CONDA_PROMPT_MODIFIER=(rosenv) PYTHONPATH=/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/prefix_override:/Users/mateolopezv/miniforge3/envs/rosenv/lib/python3.11/site-packages/colcon_core/task/python/colcon_distutils_commands:/Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/install/custom_code/lib/python3.11/site-packages:${PYTHONPATH} SHLVL=2 _=/Users/mateolopezv/miniforge3/envs/rosenv/bin/env /Users/mateolopezv/miniforge3/envs/rosenv/bin/python3.11 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/custom_code build --build-base /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/build install --record /Users/mateolopezv/Documents/UdeSA/Principios de la Robótica Autónoma/TPs/TP3/build/custom_code/install.log --single-version-externally-managed install_data

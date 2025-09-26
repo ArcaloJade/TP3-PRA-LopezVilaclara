@@ -18,7 +18,7 @@ class particle():
         self.y = float(new_y)
         self.orientation = float(new_orientation)
 
-    def move_odom(self, odom, noise):
+    def move_odom(self,odom,noise):
         '''
         move_odom: Takes in Odometry data and moves the robot based on the odometry data
         
@@ -29,16 +29,20 @@ class particle():
         delta_trans = odom['t']
         alpha1, alpha2, alpha3, alpha4 = noise
 
+        # Aplicar ruido a los movimientos
         delta_rot1_hat = delta_rot1 + np.random.normal(0, np.sqrt(alpha1*delta_rot1**2 + alpha2*delta_trans**2))
         delta_trans_hat = delta_trans + np.random.normal(0, np.sqrt(alpha3*delta_trans**2 + alpha4*(delta_rot1**2 + delta_rot2**2)))
         delta_rot2_hat = delta_rot2 + np.random.normal(0, np.sqrt(alpha1*delta_rot2**2 + alpha2*delta_trans**2))
 
+        # Calcular nueva posición
         x_new = self.x + delta_trans_hat * np.cos(self.orientation + delta_rot1_hat)
         y_new = self.y + delta_trans_hat * np.sin(self.orientation + delta_rot1_hat)
         theta_new = self.orientation + delta_rot1_hat + delta_rot2_hat
 
+        # Normalizar theta a [-pi, pi]
         theta_new = (theta_new + np.pi) % (2 * np.pi) - np.pi
 
+        # Actualizar los valores de la partícula
         self.set(x_new, y_new, theta_new)
 
     def set_weight(self, weight):
@@ -75,100 +79,85 @@ class RobotFunctions:
         Esta funcion debe devolver lo que ustedes consideran como la posición del robot segun las particulas.
         Queda a su criterio como la obtienen en base a las particulas.
         '''
-        xs = np.array([p.x for p in self.particles])
-        ys = np.array([p.y for p in self.particles])
-        thetas = np.array([p.orientation for p in self.particles])
-        weights = np.array([p.weight for p in self.particles])
+        states = np.array([[p.x, p.y, p.orientation] for p in self.particles])
+        weights = self.get_weights()
 
-        if np.sum(weights) > 0:
-            weights = weights / np.sum(weights)
-        else:
-            weights = np.ones(len(weights)) / len(weights)
+        # Media ponderada de x e y
+        x_mean = np.average(states[:, 0], weights=weights)
+        y_mean = np.average(states[:, 1], weights=weights)
 
-        x_est = np.average(xs, weights=weights)
-        y_est = np.average(ys, weights=weights)
+        # Para la orientación, usamos media circular
+        sin_sum = np.sum(np.sin(states[:, 2]) * weights)
+        cos_sum = np.sum(np.cos(states[:, 2]) * weights)
+        theta_mean = np.arctan2(sin_sum, cos_sum)
 
-        sin_sum = np.average(np.sin(thetas), weights=weights)
-        cos_sum = np.average(np.cos(thetas), weights=weights)
-        theta_est = np.arctan2(sin_sum, cos_sum)
-
-        return [x_est, y_est, theta_est]
+        return [x_mean, y_mean, theta_mean]
 
     def update_particles(self, data, map_data, grid):
         '''
         La funcion update_particles se llamará cada vez que se recibe data del LIDAR
         Esta funcion toma:
-            data: datos del lidar en formato scan (LaserScan).
-                Se usa scan_refererence para convertir los datos crudos en
-                posiciones globales calculadas
-            map_data: mensaje crudo del mapa de likelihood (OccupancyGrid).
-            grid: representación como matriz de numpy del mapa de likelihood. 
-                Importante:
-                    - La grilla se indexa como grid[y, x]
-                    - La celda (0,0) corresponde a la esquina inferior izquierda del mapa.
+            data: datos del lidar en formato scan (Ver documentacion de ROS sobre tipo de dato LaserScan).
+                  Pueden aprovechar la funcion scan_refererence del TP1 para convertir los datos crudos en
+                  posiciones globales calculadas
+            map_data: Es el mensaje crudo del mapa de likelihood. Pueden consultar la documentacion de ROS
+                      sobre tipos de dato OccupancyGrid.
+            grid: Es la representación como matriz de numpy del mapa de likelihood. 
+                  Importante:
+                    - La grilla se indexa como grid[y, x], primero fila (eje Y) y luego columna (eje X).
+                    - La celda (0,0) corresponde a la esquina inferior izquierda del mapa en coordenadas de ROS.
         
-        Esta funcion debe actualizar el valor de probabilidad (weight) de cada partícula
-        y luego resamplear las partículas.
+        Esta funcion debe tomar toda esta data y actualizar el valor de probabilidad (weight) de cada partícula
+        En base a eso debe resamplear las partículas. Tenga cuidado al resamplear de hacer un deepcopy para que 
+        no sean el mismo objeto de python
         '''
-
-        resolution = map_data.info.resolution
-        origin_x = map_data.info.origin.position.x
-        origin_y = map_data.info.origin.position.y
-        width = map_data.info.width
-        height = map_data.info.height
-
         new_weights = []
 
         for part in self.particles:
-            points_map = self.scan_refererence(
-                data.ranges,
-                data.range_min,
-                data.range_max,
-                data.angle_min,
-                data.angle_max,
-                data.angle_increment,
-                [part.x, part.y, part.orientation]
+            # Obtener puntos del LIDAR transformados al sistema global según la partícula
+            points = self.scan_refererence(
+                ranges=data['ranges'],
+                range_min=data['range_min'],
+                range_max=data['range_max'],
+                angle_min=data['angle_min'],
+                angle_max=data['angle_max'],
+                angle_increment=data['angle_increment'],
+                last_odom=[part.x, part.y, part.orientation]
             )
 
-            xs, ys = points_map
-            log_prob = 0.0
+            x_points = np.round(points[0]).astype(int)
+            y_points = np.round(points[1]).astype(int)
 
-            for x_z, y_z in zip(xs, ys):
-                x_cell = int((x_z - origin_x) / resolution)
-                y_cell = int((y_z - origin_y) / resolution)
+            # Inicializamos peso en 1
+            weight = 1.0
 
-                if 0 <= x_cell < width and 0 <= y_cell < height:
-                    val = grid[y_cell, x_cell]
-                    if val >= 0:
-                        p = val / 100.0
-                    else:
-                        p = 0.01
+            # Multiplicamos probabilidades según el mapa
+            for x, y in zip(x_points, y_points):
+                if 0 <= x < grid.shape[1] and 0 <= y < grid.shape[0]:
+                    weight *= grid[y, x] + 1e-6  # evitar peso 0
                 else:
-                    p = 0.01
+                    weight *= 1e-6  # puntos fuera del mapa muy improbables
 
-                log_prob += np.log(max(p, 1e-6))
+            part.set_weight(weight)
+            new_weights.append(weight)
 
-            part.weight = np.exp(log_prob)
-            new_weights.append(part.weight)
-
+        # Normalizamos pesos
         new_weights = np.array(new_weights)
         if np.sum(new_weights) > 0:
             new_weights /= np.sum(new_weights)
         else:
-            new_weights = np.ones(len(new_weights)) / len(new_weights)
-
-        for i, part in enumerate(self.particles):
-            part.weight = new_weights[i]
-
-        indices = np.random.choice(
-            range(len(self.particles)),
-            size=len(self.particles),
-            p=new_weights
-        )
-        new_particles = [copy.deepcopy(self.particles[i]) for i in indices]
-        self.particles = new_particles
+            # Si todos los pesos son cero, poner uniformes
+            new_weights = np.ones(self.num_particles) / self.num_particles
 
         self.weights = new_weights
+
+        # Resampleo de partículas según los pesos
+        indices = np.random.choice(self.num_particles, size=self.num_particles, p=self.weights)
+        self.particles = [copy.deepcopy(self.particles[i]) for i in indices]
+        
+        # Después del resampleo, pesos uniformes
+        self.weights = np.ones(self.num_particles) / self.num_particles
+
 
 
 
@@ -186,31 +175,23 @@ class RobotFunctions:
             - points_map[0]: coordenadas x
             - points_map[1]: coordenadas y
         '''
-        # xs = []
-        # ys = []
-        # angle = angle_min
-        # tx, ty, theta = last_odom
-        # for r in ranges:
-        #     if range_min < r < range_max:
-        #         x_local = r * np.cos(angle)
-        #         y_local = r * np.sin(angle)
-        #         x_global = tx + np.cos(theta) * x_local - np.sin(theta) * y_local
-        #         y_global = ty + np.sin(theta) * x_local + np.cos(theta) * y_local
-        #         xs.append(x_global)
-        #         ys.append(y_global)
-        #     angle += angle_increment
-        # points_map = np.array([xs, ys])
-        # return points_map
-        xs = []
-        ys = []
-        tx, ty, theta = last_odom
-        angle = angle_min
-        for r in ranges:
-            if range_min < r < range_max:
-                ang_global = theta + angle
-                x_global = tx + r * np.cos(ang_global)
-                y_global = ty + r * np.sin(ang_global)
-                xs.append(x_global)
-                ys.append(y_global)
-            angle += angle_increment
-        return np.array([xs, ys])
+        
+        x_odom, y_odom, theta_odom = last_odom
+    
+        points_x = []
+        points_y = []
+
+        for i, r in enumerate(ranges):
+            if range_min <= r <= range_max:
+                angle = angle_min + i * angle_increment
+                # Coordenadas locales
+                x_local = r * np.cos(angle)
+                y_local = r * np.sin(angle)
+                # Transformación a global
+                x_global = x_odom + x_local * np.cos(theta_odom) - y_local * np.sin(theta_odom)
+                y_global = y_odom + x_local * np.sin(theta_odom) + y_local * np.cos(theta_odom)
+                points_x.append(x_global)
+                points_y.append(y_global)
+        
+        points_map = np.array([np.array(points_x), np.array(points_y)])
+        return points_map
