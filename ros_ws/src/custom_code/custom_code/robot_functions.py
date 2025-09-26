@@ -117,9 +117,10 @@ class RobotFunctions:
         origin_y = map_data.info.origin.position.y
         width = map_data.info.width
         height = map_data.info.height
+        # width, height = grid.shape
         
         # Extraer parámetros del LIDAR
-        ranges = data.ranges
+        ranges = data.ranges #np.array(data.ranges)
         range_min = data.range_min
         range_max = data.range_max
         angle_min = data.angle_min
@@ -217,7 +218,7 @@ class RobotFunctions:
 
         for i, r in enumerate(ranges):
             if range_min <= r <= range_max:
-                angle = angle_min + i * angle_increment
+                angle = angle_min + i * angle_increment + 180
                 # Coordenadas locales
                 x_local = r * np.cos(angle)
                 y_local = r * np.sin(angle)
