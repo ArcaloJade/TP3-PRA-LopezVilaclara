@@ -125,8 +125,14 @@ class RobotFunctions:
                 last_odom=[part.x, part.y, part.orientation]
             )
 
-            x_points = np.round(points[0]).astype(int)
-            y_points = np.round(points[1]).astype(int)
+            # Obtener resolución y origen del mapa
+            resolution = map_data.info.resolution
+            origin_x = map_data.info.origin.position.x
+            origin_y = map_data.info.origin.position.y
+
+            # Convertir de coordenadas globales (metros) a índices de grilla
+            x_points = np.round((points[0] - origin_x) / resolution).astype(int)
+            y_points = np.round((points[1] - origin_y) / resolution).astype(int)
 
             # Inicializamos peso en 1
             weight = 1.0
